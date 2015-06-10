@@ -27,7 +27,8 @@ intervals <- group_by(activity, interval) %>% summarize(avg = mean(steps, na.rm=
 with(intervals, plot(interval, avg, type="l"))
 max.interval <- intervals[which.max(intervals$avg),]$interval
 ```
-####Maximum interval is: `r max.interval`
+
+#### Maximum interval is: `r max.interval`
 
 ## Imputing missing values
 ```{r}

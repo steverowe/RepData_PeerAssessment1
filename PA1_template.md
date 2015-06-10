@@ -1,4 +1,9 @@
-# Reproducible Research: Peer Assessment 1
+---
+title: "Reproducible Research: Peer Assessment 1"
+output: 
+  html_document:
+    keep_md: true
+---
 
 
 ## Loading and preprocessing the data
@@ -16,7 +21,7 @@ days <- group_by(activity, date) %>% summarize(total = sum(steps))
 hist(days$total)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-2-1.png) 
+![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
 
 ```r
 mean(days$total, na.rm=T)
@@ -41,12 +46,13 @@ intervals <- group_by(activity, interval) %>% summarize(avg = mean(steps, na.rm=
 with(intervals, plot(interval, avg, type="l"))
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
 
 ```r
 max.interval <- intervals[which.max(intervals$avg),]$interval
 ```
-####Maximum interval is: 835
+
+#### Maximum interval is: 835
 
 ## Imputing missing values
 
@@ -64,7 +70,7 @@ days2 <- group_by(activity2, date) %>% summarize(total = sum(steps))
 hist(days2$total)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
 
 ```r
 mean(days2$total, na.rm=T)
@@ -95,4 +101,4 @@ library(ggplot2)
 ggplot(intervals2, aes(interval, avg)) + geom_line() + facet_grid(daytype ~ .)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-6-1.png) 
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png) 
